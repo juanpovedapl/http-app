@@ -1,5 +1,6 @@
 import './style.css'
-import { BreakingbadApp } from './src/breakingbad/breakingbad-app'
+ //import { BreakingbadApp } from './src/breakingbad/breakingbad-app'
+import { UsersApp } from './src/users/users-app.js';
 
 
 document.querySelector('#app').innerHTML = `
@@ -13,5 +14,6 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 const element =document.querySelector('.card');
-BreakingbadApp(element);
+//BreakingbadApp(element);
 
+UsersApp(element);
