@@ -24,15 +24,35 @@ const loadPreviusPage = async () =>{
     state.users= users;
 
 }
-const  onUserChange= async () =>{
+/**
+ * 
+ * @param {User} updateUser 
+ */
+const  onUserChange= async ( updateUser) =>{
 
-    throw new Error('No implementado');
+    let wasFound = false;
+    state.users = state.users.map(user => {
+        if (user.id === updateUser.id){
+            wasFound = true;
+            return updateUser;
+        }
+        return user;
+
+    });
+    if (state.users.length< 10 && !wasFound){
+        state.users.push(updateUser);
+    }
 
 }
 
 const  reloadPage= async () =>{
 
-    throw new Error('No implementado');
+    const users = await loadUsersByPage(state.currentPage );
+    if (users.length === 0) {
+        await loadPreviusPage();
+        return;
+    }; // es decir que no haga nada por que la pagina no existe
+    state.users= users;
 
 }
 
